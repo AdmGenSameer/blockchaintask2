@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VIT Bhopal Blockchain Club Profile</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      color: #ffd700;
+    }
+
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .profile-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
+      border: 1px solid #ffd700;
+      backdrop-filter: blur(10px);
+    }
+
+    .club-logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.2rem;
+      color: #ffd700;
+      text-align: right;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #ffd700;
+    }
+
+    .profile-pic-container {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #ffd700;
+      animation: glow 2s infinite alternate;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1a1a1a;
+      overflow: hidden;
+    }
+
+    .profile-pic-container i {
+      font-size: 80px;
+      color: #ffd700;
+    }
+
+    .profile-info h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #ffd700;
+    }
+
+    .profile-info p {
+      color: #cccccc;
+      font-size: 1.1rem;
+    }
+
+    .badges-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .badge {
+      background: linear-gradient(145deg, #1a1a1a, #000000);
+      border: 1px solid #ffd700;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .badge:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .badge i {
+      font-size: 40px;
+      color: #ffd700;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .badge:hover i {
+      transform: scale(1.2);
+    }
+
+    .badge h3 {
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge p {
+      color: #cccccc;
+      font-size: 0.9rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      background: linear-gradient(145deg, #1a1a1a, #000000);
+      border: 1px solid #ffd700;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-card h4 {
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card i {
+      font-size: 24px;
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px #ffd700;
+      }
+      to {
+        box-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700;
+      }
+    }
+
+    .club-info {
+      background: linear-gradient(145deg, #1a1a1a, #000000);
+      border: 1px solid #ffd700;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .club-info h2 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+    }
+
+    .club-info p {
+      color: #cccccc;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+  
+  <div class="profile-container">
+    <div class="club-logo">
+      <h3>VIT Bhopal</h3>
+      <p>Blockchain Club</p>
+    </div>
+
+    <div class="profile-header">
+      <div class="profile-pic-container">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="profile-info">
+        <h1>Alex BlockMaster</h1>
+        <p>Blockchain Developer & Club Member</p>
+        <p>Member since 2023 • Level 42</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <i class="fas fa-file-contract"></i>
+        <h4>Smart Contracts</h4>
+        <p>147 Deployed</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-code-branch"></i>
+        <h4>Contributions</h4>
+        <p>2,534</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-star"></i>
+        <h4>Reputation</h4>
+        <p>9,847</p>
+      </div>
+    </div>
+
+    <div class="badges-container">
+      <div class="badge">
+        <i class="fas fa-file-contract"></i>
+        <h3>Smart Contract Master</h3>
+        <p>Deployed 100+ verified contracts</p>
+      </div>
+      <div class="badge">
+        <i class="fas fa-chart-line"></i>
+        <h3>DeFi Pioneer</h3>
+        <p>Created 10+ DeFi protocols</p>
+      </div>
+      <div class="badge">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Security Expert</h3>
+        <p>No vulnerabilities found in audits</p>
+      </div>
+      <div class="badge">
+        <i class="fas fa-palette"></i>
+        <h3>NFT Creator</h3>
+        <p>Launched successful NFT collections</p>
+      </div>
+    </div>
+
+    <div class="club-info">
+      <h2>About VIT Bhopal Blockchain Club</h2>
+      <p>A student-led technical club dedicated to fostering blockchain innovation and education. We organize workshops, hackathons, and provide hands-on experience with blockchain technologies.</p>
+    </div>
+  </div>
+
+  <script>
+    // Three.js Background Animation
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+    // Create floating cubes representing blockchain
+    const cubes = [];
+    const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+    const cubeMaterial = new THREE.MeshPhongMaterial({
+      color: 0xffd700,
+      opacity: 0.3,
+      transparent: true,
+      wireframe: true
+    });
+
+    for (let i = 0; i < 20; i++) {
+      const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+      cube.position.x = Math.random() * 20 - 10;
+      cube.position.y = Math.random() * 20 - 10;
+      cube.position.z = Math.random() * 20 - 10;
+      cube.rotation.x = Math.random() * Math.PI;
+      cube.rotation.y = Math.random() * Math.PI;
+      cubes.push(cube);
+      scene.add(cube);
+    }
+
+    // Add lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xffd700, 1);
+    pointLight.position.set(10, 10, 10);
+    scene.add(pointLight);
+
+    camera.position.z = 15;
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+
+      cubes.forEach(cube => {
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+      });
+
+      renderer.render(scene, camera);
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    animate();
+  </script>
+</body>
+</html>
